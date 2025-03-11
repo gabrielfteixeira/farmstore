@@ -28,4 +28,11 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
     public Produto buscarProdutoPorId(Long id){
         return null;
     }
+
+    @Override
+    public Produto cadastrarProduto(Produto produto) {
+        return produtoEntityMapper.toDomain(produtoRepository.save(
+                produtoEntityMapper.toEntity(produto)
+        ));
+    }
 }

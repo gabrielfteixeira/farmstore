@@ -1,14 +1,14 @@
 package com.farmstore.Farmstore.infrastructure.presentation;
 
+import com.farmstore.Farmstore.core.entity.Produto;
 import com.farmstore.Farmstore.core.usecases.BuscarProdutoPorIdUseCase;
 import com.farmstore.Farmstore.core.usecases.BuscarProdutoUseCase;
+import com.farmstore.Farmstore.core.usecases.CadastrarProdutoUseCase;
 import com.farmstore.Farmstore.infrastructure.dtos.ProdutoDTO;
 import com.farmstore.Farmstore.infrastructure.mapper.ProdutoDtoMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,16 +19,25 @@ public class FarmStoreController {
     private final BuscarProdutoUseCase buscarProdutoUseCase;
     private final BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase;
     private final ProdutoDtoMapper produtoDtoMapper;
+    private final CadastrarProdutoUseCase cadastrarProdutoUseCase;
 
-    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper) {
+    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase) {
         this.buscarProdutoUseCase = buscarProdutoUseCase;
         this.buscarProdutoPorIdUseCase = buscarProdutoPorIdUseCase;
         this.produtoDtoMapper = produtoDtoMapper;
+        this.cadastrarProdutoUseCase = cadastrarProdutoUseCase;
     }
 
-    @GetMapping("/produtos")
+    @GetMapping("/produto")
     public ResponseEntity<List<ProdutoDTO>> listarProduto(){
         return  ResponseEntity.status(HttpStatus.OK).body(buscarProdutoUseCase.execute().stream()
                 .map(produtoDtoMapper::toDto).toList());
+    }
+
+    @PostMapping("/produto")
+    public ResponseEntity<ProdutoDTO> cadastrarProduto(@RequestBody ProdutoDTO produtoDTO){
+        Produto produto = cadastrarProdutoUseCase.execute(produtoDtoMapper.toDomain(produtoDTO));
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtoDtoMapper.toDto(produto));
     }
 }

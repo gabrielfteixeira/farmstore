@@ -10,4 +10,6 @@ public interface FarmStoreGateway {
     List<Produto> buscarProduto();
     Produto buscarProdutoPorId(Long id);
 
+    Produto cadastrarProduto(Produto produto);
+
 }
