@@ -34,6 +34,14 @@ public class FarmStoreController {
                 .map(produtoDtoMapper::toDto).toList());
     }
 
+    @GetMapping("/produto/{id}")
+    public ResponseEntity<ProdutoDTO> listarProdutoPorId(@PathVariable Long id){
+
+        return  ResponseEntity.status(HttpStatus.OK).body(produtoDtoMapper.toDto(
+                buscarProdutoPorIdUseCase.execute(id)
+        ));
+    }
+
     @PostMapping("/produto")
     public ResponseEntity<ProdutoDTO> cadastrarProduto(@RequestBody ProdutoDTO produtoDTO){
         Produto produto = cadastrarProdutoUseCase.execute(produtoDtoMapper.toDomain(produtoDTO));

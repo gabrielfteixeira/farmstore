@@ -4,6 +4,7 @@ import com.farmstore.Farmstore.core.entity.Produto;
 import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BuscarProdutoPorIdUseCaseImpl implements BuscarProdutoPorIdUseCase{
 

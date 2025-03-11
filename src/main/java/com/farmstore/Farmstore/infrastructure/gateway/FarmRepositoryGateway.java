@@ -7,6 +7,7 @@ import com.farmstore.Farmstore.infrastructure.persistence.ProdutoRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class FarmRepositoryGateway implements FarmStoreGateway {
@@ -24,9 +25,17 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
         return produtoRepository.findAll().stream().map(produtoEntityMapper::toDomain).toList();
     }
 
+
+    public Boolean existeProdutoPorId(Long id){
+        return produtoRepository.findById(id).stream()
+                .anyMatch(produtoEntity -> produtoEntity.equals(id));
+    }
+
     @Override
-    public Produto buscarProdutoPorId(Long id){
-        return null;
+    public Produto buscarProdutoPorId(Long id) {
+        if(existeProdutoPorId(id))
+            return null;
+        return produtoEntityMapper.toDomain(produtoRepository.findById(id).orElse(null));
     }
 
     @Override
