@@ -12,4 +12,6 @@ public interface FarmStoreGateway {
 
     Produto cadastrarProduto(Produto produto);
 
+    boolean deletar(Long id);
+
 }

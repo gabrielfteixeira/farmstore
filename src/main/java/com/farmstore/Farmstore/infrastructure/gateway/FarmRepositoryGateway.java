@@ -44,4 +44,13 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
                 produtoEntityMapper.toEntity(produto)
         ));
     }
+
+    @Override
+    public boolean deletar(Long id) {
+        if (produtoRepository.findById(id).isPresent()) {
+            produtoRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

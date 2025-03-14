@@ -4,6 +4,7 @@ import com.farmstore.Farmstore.core.entity.Produto;
 import com.farmstore.Farmstore.core.usecases.BuscarProdutoPorIdUseCase;
 import com.farmstore.Farmstore.core.usecases.BuscarProdutoUseCase;
 import com.farmstore.Farmstore.core.usecases.CadastrarProdutoUseCase;
+import com.farmstore.Farmstore.core.usecases.DeletarProdutoUseCase;
 import com.farmstore.Farmstore.infrastructure.dtos.ProdutoDTO;
 import com.farmstore.Farmstore.infrastructure.mapper.ProdutoDtoMapper;
 import org.springframework.http.HttpStatus;
@@ -20,12 +21,14 @@ public class FarmStoreController {
     private final BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase;
     private final ProdutoDtoMapper produtoDtoMapper;
     private final CadastrarProdutoUseCase cadastrarProdutoUseCase;
+    private final DeletarProdutoUseCase deletarProdutoUseCase;
 
-    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase) {
+    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase, DeletarProdutoUseCase deletarProdutoUseCase) {
         this.buscarProdutoUseCase = buscarProdutoUseCase;
         this.buscarProdutoPorIdUseCase = buscarProdutoPorIdUseCase;
         this.produtoDtoMapper = produtoDtoMapper;
         this.cadastrarProdutoUseCase = cadastrarProdutoUseCase;
+        this.deletarProdutoUseCase = deletarProdutoUseCase;
     }
 
     @GetMapping("/produto")
@@ -47,5 +50,11 @@ public class FarmStoreController {
         Produto produto = cadastrarProdutoUseCase.execute(produtoDtoMapper.toDomain(produtoDTO));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoDtoMapper.toDto(produto));
+    }
+
+    @DeleteMapping
+    public String deletarPorId(@PathVariable Long id){
+
+        return "";
     }
 }
