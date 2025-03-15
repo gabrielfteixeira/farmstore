@@ -12,7 +12,9 @@ public class DeletarProdutoUseCaseImpl implements DeletarProdutoUseCase{
     }
 
     @Override
-    public boolean execute(Long id) {
-        return farmStoreGateway.deletar(id);
+    public boolean execute(Long id, boolean existe) {
+        if (existe)
+            return farmStoreGateway.deletar(id);
+        return false;
     }
 }

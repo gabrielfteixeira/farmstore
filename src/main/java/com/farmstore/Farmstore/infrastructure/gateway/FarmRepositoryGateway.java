@@ -25,8 +25,8 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
         return produtoRepository.findAll().stream().map(produtoEntityMapper::toDomain).toList();
     }
 
-
-    public Boolean existeProdutoPorId(Long id){
+    @Override
+    public boolean existeProdutoPorId(Long id){
         return produtoRepository.findById(id).stream()
                 .anyMatch(produtoEntity -> produtoEntity.equals(id));
     }
@@ -47,10 +47,13 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
 
     @Override
     public boolean deletar(Long id) {
-        if (produtoRepository.findById(id).isPresent()) {
+        try {
             produtoRepository.deleteById(id);
             return true;
+        } catch (RuntimeException e) {
+
+            return false;
         }
-        return false;
+
     }
 }

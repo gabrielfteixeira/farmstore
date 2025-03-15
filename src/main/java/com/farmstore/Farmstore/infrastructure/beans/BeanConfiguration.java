@@ -22,4 +22,9 @@ public class BeanConfiguration {
     public CadastrarProdutoUseCase cadastrarProdutoUseCase(FarmStoreGateway farmStoreGateway){
         return new CadastrarProdutoUseCaseImpl(farmStoreGateway);
     }
+
+    @Bean
+    public DeletarProdutoUseCase deletarProdutoUseCase(FarmStoreGateway farmStoreGateway){
+        return new DeletarProdutoUseCaseImpl(farmStoreGateway);
+    }
 }

@@ -7,6 +7,7 @@ import com.farmstore.Farmstore.core.usecases.CadastrarProdutoUseCase;
 import com.farmstore.Farmstore.core.usecases.DeletarProdutoUseCase;
 import com.farmstore.Farmstore.infrastructure.dtos.ProdutoDTO;
 import com.farmstore.Farmstore.infrastructure.mapper.ProdutoDtoMapper;
+import com.farmstore.Farmstore.infrastructure.service.ProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +23,15 @@ public class FarmStoreController {
     private final ProdutoDtoMapper produtoDtoMapper;
     private final CadastrarProdutoUseCase cadastrarProdutoUseCase;
     private final DeletarProdutoUseCase deletarProdutoUseCase;
+    private final ProdutoService produtoService;
 
-    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase, DeletarProdutoUseCase deletarProdutoUseCase) {
+    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase, DeletarProdutoUseCase deletarProdutoUseCase, ProdutoService produtoService) {
         this.buscarProdutoUseCase = buscarProdutoUseCase;
         this.buscarProdutoPorIdUseCase = buscarProdutoPorIdUseCase;
         this.produtoDtoMapper = produtoDtoMapper;
         this.cadastrarProdutoUseCase = cadastrarProdutoUseCase;
         this.deletarProdutoUseCase = deletarProdutoUseCase;
+        this.produtoService = produtoService;
     }
 
     @GetMapping("/produto")
@@ -52,9 +55,14 @@ public class FarmStoreController {
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoDtoMapper.toDto(produto));
     }
 
-    @DeleteMapping
-    public String deletarPorId(@PathVariable Long id){
+    @DeleteMapping("/produto/{id}")
+    public ResponseEntity<Map<String,String>> deletarPorId(@PathVariable Long id){
+        boolean existe = produtoService.existe(id); // produtoRepository.findById(id).isPresent()
+        existe = deletarProdutoUseCase.execute(id,existe);
 
-        return "";
+
+        if (existe)
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.notFound().build();
     }
 }
