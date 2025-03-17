@@ -56,10 +56,8 @@ public class FarmStoreController {
     }
 
     @DeleteMapping("/produto/{id}")
-    public ResponseEntity<Map<String,String>> deletarPorId(@PathVariable Long id){
-        boolean existe = produtoService.existe(id); // produtoRepository.findById(id).isPresent()
-        existe = deletarProdutoUseCase.execute(id,existe);
-
+    public ResponseEntity<Void> deletarPorId(@PathVariable Long id){
+        boolean existe = deletarProdutoUseCase.execute(id);
 
         if (existe)
             return ResponseEntity.noContent().build();

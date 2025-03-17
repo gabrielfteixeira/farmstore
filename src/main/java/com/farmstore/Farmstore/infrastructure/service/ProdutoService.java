@@ -16,7 +16,7 @@ public class ProdutoService {
         this.farmStoreGateway = farmStoreGateway;
     }
 
-    public boolean existe(Long id){
-        return farmStoreGateway.existeProdutoPorId(id);
-    }
+//    public boolean existe(Long id){
+//        return farmStoreGateway.existeProdutoPorId(id);
+//    }
 }

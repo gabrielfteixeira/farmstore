@@ -27,8 +27,10 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
 
     @Override
     public boolean existeProdutoPorId(Long id){
-        return produtoRepository.findById(id).stream()
-                .anyMatch(produtoEntity -> produtoEntity.equals(id));
+        return produtoRepository.findById(id).isPresent();
+                //.stream()
+                //.anyMatch(produtoEntity -> produtoEntity.equals(id));
+
     }
 
     @Override
@@ -47,13 +49,8 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
 
     @Override
     public boolean deletar(Long id) {
-        try {
-            produtoRepository.deleteById(id);
-            return true;
-        } catch (RuntimeException e) {
-
-            return false;
-        }
+        produtoRepository.deleteById(id);
+        return true;
 
     }
 }
