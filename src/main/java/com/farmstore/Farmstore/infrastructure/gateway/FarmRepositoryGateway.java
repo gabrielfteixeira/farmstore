@@ -28,9 +28,6 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
     @Override
     public boolean existeProdutoPorId(Long id){
         return produtoRepository.findById(id).isPresent();
-                //.stream()
-                //.anyMatch(produtoEntity -> produtoEntity.equals(id));
-
     }
 
     @Override
