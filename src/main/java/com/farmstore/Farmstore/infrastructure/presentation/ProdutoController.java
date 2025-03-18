@@ -6,7 +6,7 @@ import com.farmstore.Farmstore.core.usecases.BuscarProdutoUseCase;
 import com.farmstore.Farmstore.core.usecases.CadastrarProdutoUseCase;
 import com.farmstore.Farmstore.core.usecases.DeletarProdutoUseCase;
 import com.farmstore.Farmstore.infrastructure.dtos.ProdutoDTO;
-import com.farmstore.Farmstore.infrastructure.mapper.ProdutoDtoMapper;
+import com.farmstore.Farmstore.infrastructure.mapper.produto.ProdutoDtoMapper;
 import com.farmstore.Farmstore.infrastructure.service.ProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/")
-public class FarmStoreController {
+public class ProdutoController {
 
     private final BuscarProdutoUseCase buscarProdutoUseCase;
     private final BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase;
@@ -25,7 +25,7 @@ public class FarmStoreController {
     private final DeletarProdutoUseCase deletarProdutoUseCase;
     private final ProdutoService produtoService;
 
-    public FarmStoreController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase, DeletarProdutoUseCase deletarProdutoUseCase, ProdutoService produtoService) {
+    public ProdutoController(BuscarProdutoUseCase buscarProdutoUseCase, BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase, ProdutoDtoMapper produtoDtoMapper, CadastrarProdutoUseCase cadastrarProdutoUseCase, DeletarProdutoUseCase deletarProdutoUseCase, ProdutoService produtoService) {
         this.buscarProdutoUseCase = buscarProdutoUseCase;
         this.buscarProdutoPorIdUseCase = buscarProdutoPorIdUseCase;
         this.produtoDtoMapper = produtoDtoMapper;

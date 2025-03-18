@@ -1,7 +1,10 @@
 package com.farmstore.Farmstore.infrastructure.beans;
 
+import com.farmstore.Farmstore.core.gateway.MarcaGateway;
 import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 import com.farmstore.Farmstore.core.usecases.*;
+import com.farmstore.Farmstore.core.usecases.marcas.CadastrarMarcaUseCase;
+import com.farmstore.Farmstore.core.usecases.marcas.CadastrarMarcaUseCaseImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,5 +29,10 @@ public class BeanConfiguration {
     @Bean
     public DeletarProdutoUseCase deletarProdutoUseCase(ProdutoGateway produtoGateway){
         return new DeletarProdutoUseCaseImpl(produtoGateway);
+    }
+
+    @Bean
+    public CadastrarMarcaUseCase cadastrarMarcaUseCase(MarcaGateway marcaGateway){
+        return new CadastrarMarcaUseCaseImpl(marcaGateway);
     }
 }

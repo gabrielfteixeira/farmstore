@@ -2,7 +2,7 @@ package com.farmstore.Farmstore.infrastructure.gateway;
 
 import com.farmstore.Farmstore.core.entity.Produto;
 import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
-import com.farmstore.Farmstore.infrastructure.mapper.ProdutoEntityMapper;
+import com.farmstore.Farmstore.infrastructure.mapper.produto.ProdutoEntityMapper;
 import com.farmstore.Farmstore.infrastructure.persistence.produto.ProdutoRepository;
 import org.springframework.stereotype.Component;
 

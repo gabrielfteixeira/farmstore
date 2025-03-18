@@ -1,4 +1,4 @@
-package com.farmstore.Farmstore.infrastructure.mapper;
+package com.farmstore.Farmstore.infrastructure.mapper.produto;
 
 import com.farmstore.Farmstore.core.entity.Produto;
 import com.farmstore.Farmstore.infrastructure.persistence.produto.ProdutoEntity;
