@@ -6,6 +6,8 @@ import com.farmstore.Farmstore.infrastructure.mapper.marca.MarcaEntityMapper;
 import com.farmstore.Farmstore.infrastructure.persistence.marca.MarcaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class MarcaRepositoryGateway implements MarcaGateway {
 
@@ -21,5 +23,12 @@ public class MarcaRepositoryGateway implements MarcaGateway {
     public Marca cadastrar(Marca marca) {
         return  marcaEntityMapper.toDomain(
                 marcaRepository.save(marcaEntityMapper.toEntity(marca)));
+    }
+
+    @Override
+    public List<Marca> buscar() {
+        return marcaRepository.findAll().stream()
+                .map(marcaEntity -> marcaEntityMapper.toDomain(marcaEntity))
+                .toList();
     }
 }

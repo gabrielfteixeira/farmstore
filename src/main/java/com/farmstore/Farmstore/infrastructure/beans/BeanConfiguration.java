@@ -3,6 +3,8 @@ package com.farmstore.Farmstore.infrastructure.beans;
 import com.farmstore.Farmstore.core.gateway.MarcaGateway;
 import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 import com.farmstore.Farmstore.core.usecases.*;
+import com.farmstore.Farmstore.core.usecases.marcas.BuscarMarcaUseCase;
+import com.farmstore.Farmstore.core.usecases.marcas.BuscarMarcaUseCaseImpl;
 import com.farmstore.Farmstore.core.usecases.marcas.CadastrarMarcaUseCase;
 import com.farmstore.Farmstore.core.usecases.marcas.CadastrarMarcaUseCaseImpl;
 import org.springframework.context.annotation.Bean;
@@ -35,4 +37,10 @@ public class BeanConfiguration {
     public CadastrarMarcaUseCase cadastrarMarcaUseCase(MarcaGateway marcaGateway){
         return new CadastrarMarcaUseCaseImpl(marcaGateway);
     }
+
+    @Bean
+    public BuscarMarcaUseCase buscarMarcaUseCase(MarcaGateway marcaGateway){
+        return new BuscarMarcaUseCaseImpl(marcaGateway);
+    }
+
 }
