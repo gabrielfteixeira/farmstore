@@ -1,6 +1,9 @@
 package com.farmstore.Farmstore.core.entity;
 
-public class Fornecedor extends Marca{
+public record Fornecedor(Long id,
+        String nome,
+        String cnpj,
+        String endereco
+) {
 
-    String endereco;
 }
