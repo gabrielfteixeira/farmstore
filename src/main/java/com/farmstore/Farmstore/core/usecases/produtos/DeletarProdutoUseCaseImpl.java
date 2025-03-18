@@ -1,20 +1,19 @@
 package com.farmstore.Farmstore.core.usecases;
 
-import com.farmstore.Farmstore.core.entity.Produto;
-import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
+import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 
 public class DeletarProdutoUseCaseImpl implements DeletarProdutoUseCase{
 
-    public final FarmStoreGateway farmStoreGateway;
+    public final ProdutoGateway produtoGateway;
 
-    public DeletarProdutoUseCaseImpl(FarmStoreGateway farmStoreGateway) {
-        this.farmStoreGateway = farmStoreGateway;
+    public DeletarProdutoUseCaseImpl(ProdutoGateway produtoGateway) {
+        this.produtoGateway = produtoGateway;
     }
 
     @Override
     public boolean execute(Long id) {
-        if (farmStoreGateway.existeProdutoPorId(id))
-            return farmStoreGateway.deletar(id);
+        if (produtoGateway.existeProdutoPorId(id))
+            return produtoGateway.deletar(id);
         return false;
     }
 }

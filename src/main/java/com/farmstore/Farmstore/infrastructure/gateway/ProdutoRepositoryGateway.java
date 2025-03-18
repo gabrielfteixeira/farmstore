@@ -1,21 +1,20 @@
 package com.farmstore.Farmstore.infrastructure.gateway;
 
 import com.farmstore.Farmstore.core.entity.Produto;
-import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
+import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 import com.farmstore.Farmstore.infrastructure.mapper.ProdutoEntityMapper;
-import com.farmstore.Farmstore.infrastructure.persistence.ProdutoRepository;
+import com.farmstore.Farmstore.infrastructure.persistence.produto.ProdutoRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
-public class FarmRepositoryGateway implements FarmStoreGateway {
+public class ProdutoRepositoryGateway implements ProdutoGateway {
 
     private final ProdutoRepository produtoRepository;
     private final ProdutoEntityMapper produtoEntityMapper;
 
-    public FarmRepositoryGateway(ProdutoRepository produtoRepository, ProdutoEntityMapper produtoEntityMapper) {
+    public ProdutoRepositoryGateway(ProdutoRepository produtoRepository, ProdutoEntityMapper produtoEntityMapper) {
         this.produtoRepository = produtoRepository;
         this.produtoEntityMapper = produtoEntityMapper;
     }

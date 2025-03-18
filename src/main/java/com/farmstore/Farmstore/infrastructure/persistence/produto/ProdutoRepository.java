@@ -1,4 +1,4 @@
-package com.farmstore.Farmstore.infrastructure.persistence;
+package com.farmstore.Farmstore.infrastructure.persistence.produto;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

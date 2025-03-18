@@ -1,7 +1,7 @@
 package com.farmstore.Farmstore.infrastructure.mapper;
 
 import com.farmstore.Farmstore.core.entity.Produto;
-import com.farmstore.Farmstore.infrastructure.persistence.ProdutoEntity;
+import com.farmstore.Farmstore.infrastructure.persistence.produto.ProdutoEntity;
 import org.springframework.stereotype.Component;
 
 @Component

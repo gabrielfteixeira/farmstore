@@ -1,6 +1,6 @@
 package com.farmstore.Farmstore.infrastructure.beans;
 
-import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
+import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 import com.farmstore.Farmstore.core.usecases.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,22 +9,22 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    public BuscarProdutoUseCase buscarProdutoUseCase(FarmStoreGateway farmStoreGateway){
-        return new BuscarProdutoUseCaseImpl(farmStoreGateway);
+    public BuscarProdutoUseCase buscarProdutoUseCase(ProdutoGateway produtoGateway){
+        return new BuscarProdutoUseCaseImpl(produtoGateway);
     }
 
     @Bean
-    public BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase(FarmStoreGateway farmStoreGateway){
-        return new BuscarProdutoPorIdUseCaseImpl(farmStoreGateway);
+    public BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase(ProdutoGateway produtoGateway){
+        return new BuscarProdutoPorIdUseCaseImpl(produtoGateway);
     }
 
     @Bean
-    public CadastrarProdutoUseCase cadastrarProdutoUseCase(FarmStoreGateway farmStoreGateway){
-        return new CadastrarProdutoUseCaseImpl(farmStoreGateway);
+    public CadastrarProdutoUseCase cadastrarProdutoUseCase(ProdutoGateway produtoGateway){
+        return new CadastrarProdutoUseCaseImpl(produtoGateway);
     }
 
     @Bean
-    public DeletarProdutoUseCase deletarProdutoUseCase(FarmStoreGateway farmStoreGateway){
-        return new DeletarProdutoUseCaseImpl(farmStoreGateway);
+    public DeletarProdutoUseCase deletarProdutoUseCase(ProdutoGateway produtoGateway){
+        return new DeletarProdutoUseCaseImpl(produtoGateway);
     }
 }

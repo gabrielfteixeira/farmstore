@@ -1,18 +1,18 @@
 package com.farmstore.Farmstore.core.usecases;
 
 import com.farmstore.Farmstore.core.entity.Produto;
-import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
+import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 
 public class CadastrarProdutoUseCaseImpl implements CadastrarProdutoUseCase{
 
-    private final FarmStoreGateway farmStoreGateway;
+    private final ProdutoGateway produtoGateway;
 
-    public CadastrarProdutoUseCaseImpl(FarmStoreGateway farmStoreGateway) {
-        this.farmStoreGateway = farmStoreGateway;
+    public CadastrarProdutoUseCaseImpl(ProdutoGateway produtoGateway) {
+        this.produtoGateway = produtoGateway;
     }
 
     @Override
     public Produto execute(Produto produto) {
-        return farmStoreGateway.cadastrarProduto(produto);
+        return produtoGateway.cadastrarProduto(produto);
     }
 }

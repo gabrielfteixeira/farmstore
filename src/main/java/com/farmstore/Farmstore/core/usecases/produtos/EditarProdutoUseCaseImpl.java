@@ -1,14 +1,14 @@
 package com.farmstore.Farmstore.core.usecases;
 
 import com.farmstore.Farmstore.core.entity.Produto;
-import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
+import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 
 public class EditarProdutoUseCaseImpl implements EditarProdutoUseCase{
 
-    private final FarmStoreGateway farmStoreGateway;
+    private final ProdutoGateway produtoGateway;
 
-    public EditarProdutoUseCaseImpl(FarmStoreGateway farmStoreGateway) {
-        this.farmStoreGateway = farmStoreGateway;
+    public EditarProdutoUseCaseImpl(ProdutoGateway produtoGateway) {
+        this.produtoGateway = produtoGateway;
     }
 
     @Override

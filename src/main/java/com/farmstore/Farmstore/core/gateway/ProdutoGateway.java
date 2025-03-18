@@ -4,7 +4,7 @@ import com.farmstore.Farmstore.core.entity.Produto;
 
 import java.util.List;
 
-public interface FarmStoreGateway {
+public interface ProdutoGateway {
     //as funções para ser implementadas
 
     List<Produto> buscarProduto();

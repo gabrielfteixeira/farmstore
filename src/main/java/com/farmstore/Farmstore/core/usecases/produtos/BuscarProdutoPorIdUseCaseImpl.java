@@ -1,21 +1,18 @@
 package com.farmstore.Farmstore.core.usecases;
 
 import com.farmstore.Farmstore.core.entity.Produto;
-import com.farmstore.Farmstore.core.gateway.FarmStoreGateway;
-
-import java.util.List;
-import java.util.Optional;
+import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 
 public class BuscarProdutoPorIdUseCaseImpl implements BuscarProdutoPorIdUseCase{
 
-    private final FarmStoreGateway farmStoreGateway;
+    private final ProdutoGateway produtoGateway;
 
-    public BuscarProdutoPorIdUseCaseImpl(FarmStoreGateway farmStoreGateway) {
-        this.farmStoreGateway = farmStoreGateway;
+    public BuscarProdutoPorIdUseCaseImpl(ProdutoGateway produtoGateway) {
+        this.produtoGateway = produtoGateway;
     }
 
     @Override
     public Produto execute(Long id) {
-        return farmStoreGateway.buscarProdutoPorId(id);
+        return produtoGateway.buscarProdutoPorId(id);
     }
 }
