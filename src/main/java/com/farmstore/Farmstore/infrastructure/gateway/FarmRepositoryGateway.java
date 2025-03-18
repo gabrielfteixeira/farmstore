@@ -32,9 +32,11 @@ public class FarmRepositoryGateway implements FarmStoreGateway {
 
     @Override
     public Produto buscarProdutoPorId(Long id) {
-        if(existeProdutoPorId(id))
-            return null;
-        return produtoEntityMapper.toDomain(produtoRepository.findById(id).orElse(null));
+        if (produtoRepository.findById(id).isEmpty()) {
+            throw new RuntimeException("Produto não encontrado para o ID: " + id);
+        }
+        return produtoEntityMapper.toDomain(produtoRepository.findById(id).get());
+
     }
 
     @Override
