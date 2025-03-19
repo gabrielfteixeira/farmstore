@@ -31,4 +31,10 @@ public class MarcaRepositoryGateway implements MarcaGateway {
                 .map(marcaEntity -> marcaEntityMapper.toDomain(marcaEntity))
                 .toList();
     }
+
+    @Override
+    public Marca buscaPorId(Long id) {
+        return marcaRepository.findById(id)
+                .map(marcaEntity -> marcaEntityMapper.toDomain(marcaEntity)).orElse(null);
+    }
 }

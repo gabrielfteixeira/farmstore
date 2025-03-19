@@ -7,4 +7,5 @@ import java.util.List;
 public interface MarcaGateway {
     Marca cadastrar(Marca marca);
     List<Marca> buscar();
+    Marca buscaPorId(Long id);
 }
