@@ -31,6 +31,7 @@ public class FornecedorRepositoryGateway implements FornecedorGateway {
 
     @Override
     public List<Fornecedor> buscar() {
-        return List.of();
+        return fornecedorRepository.findAll()
+                .stream().map (entity -> fornecedorEntityMapper.toDomain(entity)).toList();
     }
 }
