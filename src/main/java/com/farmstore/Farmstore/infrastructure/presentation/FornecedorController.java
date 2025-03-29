@@ -1,5 +1,6 @@
 package com.farmstore.Farmstore.infrastructure.presentation;
 
+import com.farmstore.Farmstore.core.usecases.fornecedor.BuscaFornecedorPorIdUseCase;
 import com.farmstore.Farmstore.core.usecases.fornecedor.BuscarFornecedorUseCase;
 import com.farmstore.Farmstore.core.usecases.fornecedor.CadastrarFornecedorUseCase;
 import com.farmstore.Farmstore.infrastructure.dtos.FornecedorDto;
@@ -15,11 +16,13 @@ public class FornecedorController {
     private final FornecedorDtoMapper fornecedorDtoMapper;
     private final CadastrarFornecedorUseCase cadastrarFornecedorUseCase;
     private final BuscarFornecedorUseCase buscarFornecedorUseCase;
+    private final BuscaFornecedorPorIdUseCase buscaFornecedorPorIdUseCase;
 
-    public FornecedorController(FornecedorDtoMapper fornecedorDtoMapper, CadastrarFornecedorUseCase cadastrarFornecedorUseCase, BuscarFornecedorUseCase buscarFornecedorUseCase) {
+    public FornecedorController(FornecedorDtoMapper fornecedorDtoMapper, CadastrarFornecedorUseCase cadastrarFornecedorUseCase, BuscarFornecedorUseCase buscarFornecedorUseCase, BuscaFornecedorPorIdUseCase buscaFornecedorPorIdUseCase) {
         this.fornecedorDtoMapper = fornecedorDtoMapper;
         this.cadastrarFornecedorUseCase = cadastrarFornecedorUseCase;
         this.buscarFornecedorUseCase = buscarFornecedorUseCase;
+        this.buscaFornecedorPorIdUseCase = buscaFornecedorPorIdUseCase;
     }
 
     @PostMapping()
@@ -34,4 +37,10 @@ public class FornecedorController {
                 fornecedorDtoMapper::toDto
         ).toList();
     }
+
+    @GetMapping("/{id}")
+    public FornecedorDto buscar(@PathVariable Long id){
+        return fornecedorDtoMapper.toDto(buscaFornecedorPorIdUseCase.execute(id));
+    }
+
 }

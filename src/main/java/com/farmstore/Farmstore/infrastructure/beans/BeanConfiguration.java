@@ -4,10 +4,7 @@ import com.farmstore.Farmstore.core.gateway.FornecedorGateway;
 import com.farmstore.Farmstore.core.gateway.MarcaGateway;
 import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 import com.farmstore.Farmstore.core.usecases.*;
-import com.farmstore.Farmstore.core.usecases.fornecedor.BuscarFornecedorUseCase;
-import com.farmstore.Farmstore.core.usecases.fornecedor.BuscarFornecedorUseCaseImpl;
-import com.farmstore.Farmstore.core.usecases.fornecedor.CadastrarFornecedorUseCase;
-import com.farmstore.Farmstore.core.usecases.fornecedor.CadastrarFornecedorUseCaseImpl;
+import com.farmstore.Farmstore.core.usecases.fornecedor.*;
 import com.farmstore.Farmstore.core.usecases.marcas.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,5 +55,10 @@ public class BeanConfiguration {
     @Bean
     public BuscarFornecedorUseCase buscarFornecedorUseCase(FornecedorGateway fornecedorGateway){
         return new BuscarFornecedorUseCaseImpl(fornecedorGateway);
+    }
+
+    @Bean
+    public BuscaFornecedorPorIdUseCase buscaFornecedorPorIdUseCase(FornecedorGateway fornecedorGateway){
+        return new BuscaFornecedorPorIdUseCaseImpl(fornecedorGateway);
     }
 }
