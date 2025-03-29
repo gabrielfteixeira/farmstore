@@ -1,8 +1,11 @@
 package com.farmstore.Farmstore.infrastructure.beans;
 
+import com.farmstore.Farmstore.core.gateway.FornecedorGateway;
 import com.farmstore.Farmstore.core.gateway.MarcaGateway;
 import com.farmstore.Farmstore.core.gateway.ProdutoGateway;
 import com.farmstore.Farmstore.core.usecases.*;
+import com.farmstore.Farmstore.core.usecases.fornecedor.CadastrarFornecedorUseCase;
+import com.farmstore.Farmstore.core.usecases.fornecedor.CadastrarFornecedorUseCaseImpl;
 import com.farmstore.Farmstore.core.usecases.marcas.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,5 +46,10 @@ public class BeanConfiguration {
     @Bean
     public BuscarMarcaPorIdUseCase buscarMarcaPorIdUseCase(MarcaGateway marcaGateway){
         return new BuscarMarcaPorIdUseCaseImpl(marcaGateway);
+    }
+
+    @Bean
+    public CadastrarFornecedorUseCase cadastrarFornecedorUseCase(FornecedorGateway fornecedorGateway){
+        return new CadastrarFornecedorUseCaseImpl(fornecedorGateway);
     }
 }
