@@ -45,18 +45,30 @@ FarmStore é um e-commerce especializado na venda de produtos voltados para faze
 
 ```
 FarmStore/
-|-- src/
-|   |-- main/
-|   |   |-- java/com/farmstore/
-|   |   |   |-- controllers/
-|   |   |   |-- services/
-|   |   |   |-- models/
-|   |   |   |-- repositories/
-|   |-- resources/
-|       |-- application.properties
-|-- pom.xml
-|-- README.md
+├── .gitattributes
+├── .gitignore
+├── docker-compose.yml
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── README.md
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/
+        │       └── farmstore/
+        │           ├── config/
+        │           ├── controllers/
+        │           ├── dtos/
+        │           ├── models/
+        │           ├── repositories/
+        │           ├── security/
+        │           ├── services/
+        │           └── utils/
+        └── resources/
+            └── application.yaml
 ```
+
 
 ## Contribuição
 
@@ -73,5 +85,5 @@ Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para m
 
 ---
 
-Desenvolvido com ❤️ por [Gabriel]
+Desenvolvido com ❤️
 
